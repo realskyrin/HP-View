@@ -20,6 +20,8 @@ public class Dashboard extends View {
     Path dash = new Path();
     PathDashPathEffect effect;
 
+    private int mCurrentSpeed = 0;
+
     public Dashboard(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
     }
@@ -31,7 +33,7 @@ public class Dashboard extends View {
         Path arc = new Path();
         arc.addArc(getWidth() / 2 - RADIUS,
                 getHeight() / 2 - RADIUS,
-                getWidth() / 2 + RADIUS ,
+                getWidth() / 2 + RADIUS,
                 getHeight() / 2 + RADIUS,
                 90 + ANGLE / 2,
                 360 - ANGLE);
@@ -59,7 +61,7 @@ public class Dashboard extends View {
         // 画线
         canvas.drawArc(getWidth() / 2 - RADIUS,
                 getHeight() / 2 - RADIUS,
-                getWidth() / 2 + RADIUS ,
+                getWidth() / 2 + RADIUS,
                 getHeight() / 2 + RADIUS,
                 90 + ANGLE / 2,
                 360 - ANGLE,
@@ -69,7 +71,7 @@ public class Dashboard extends View {
         paint.setPathEffect(effect);
         canvas.drawArc(getWidth() / 2 - RADIUS,
                 getHeight() / 2 - RADIUS,
-                getWidth() / 2 + RADIUS ,
+                getWidth() / 2 + RADIUS,
                 getHeight() / 2 + RADIUS,
                 90 + ANGLE / 2,
                 360 - ANGLE,
@@ -79,13 +81,30 @@ public class Dashboard extends View {
         // 画指针
         canvas.drawLine(getWidth() / 2,
                 getHeight() / 2,
-                (float) Math.cos(Math.toRadians(getAngleFromMark(10))) * LENGTH + getWidth() / 2,
-                (float) Math.sin(Math.toRadians(getAngleFromMark(10))) * LENGTH + getHeight() / 2,
+                (float) Math.cos(Math.toRadians(getAngleFromSpeed(mCurrentSpeed))) * LENGTH + getWidth() / 2,
+                (float) Math.sin(Math.toRadians(getAngleFromSpeed(mCurrentSpeed))) * LENGTH + getHeight() / 2,
                 paint);
 
     }
 
     int getAngleFromMark(int mark) {
         return (int) (90 + (float) ANGLE / 2 + (360 - (float) ANGLE) / 20 * mark);
+    }
+
+    int getAngleFromSpeed(int speed) {
+        return (int) (90 + (float) ANGLE / 2 + speed);
+    }
+
+    public void incrementSpeedBy(int by) {
+        setSpeed(getSpeed() + by);
+    }
+
+    public int getSpeed() {
+        return mCurrentSpeed;
+    }
+
+    public void setSpeed(int speed) {
+        this.mCurrentSpeed = speed;
+        invalidate();
     }
 }

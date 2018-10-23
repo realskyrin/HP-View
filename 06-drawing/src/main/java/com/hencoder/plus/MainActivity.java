@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
                         actionDown();
                         break;
                     case MotionEvent.ACTION_UP:
+                    case MotionEvent.ACTION_CANCEL:
                         actionUp();
                         break;
                     default:
@@ -47,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void actionUp() {
+        L.d("actionUp");
         timer.cancel();
         timer.purge();
         timer = null;
@@ -55,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void actionDown() {
+        L.d("actionDown");
         try {
             timer.cancel();
             timer.purge();

@@ -10,7 +10,18 @@
     <com.hencoder.plus.view.Dashboard
         android:id="@+id/db"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:visibility="invisible"/>
+
+    <com.hencoder.plus.view.AvatarView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible"/>
+
+    <com.hencoder.plus.view.PieChart
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible"/>
 
     <Button
         android:id="@+id/button"

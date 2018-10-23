@@ -57,6 +57,7 @@ public class AvatarView extends View {
 
     Bitmap getAvatar(int width) {
         BitmapFactory.Options options = new BitmapFactory.Options();
+        //如果设置为true，解码器将返回null（无位图），但仍将设置outXXX字段，允许调用者查询位图而无需为其像素分配内存。
         options.inJustDecodeBounds = true;
         BitmapFactory.decodeResource(getResources(), R.drawable.avatar_rengwuxian, options);
         options.inJustDecodeBounds = false;

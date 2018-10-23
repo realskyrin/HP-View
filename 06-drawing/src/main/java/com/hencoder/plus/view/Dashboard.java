@@ -106,6 +106,9 @@ public class Dashboard extends View {
     }
 
     public void setSpeed(int speed) {
+        if (speed<0||speed>360-ANGLE){
+            return;
+        }
         this.mCurrentSpeed = speed;
 //        invalidate();
         postInvalidate();

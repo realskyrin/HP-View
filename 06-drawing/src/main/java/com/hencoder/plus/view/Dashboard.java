@@ -10,7 +10,6 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.hencoder.plus.L;
 import com.hencoder.plus.Utils;
 
 public class Dashboard extends View {

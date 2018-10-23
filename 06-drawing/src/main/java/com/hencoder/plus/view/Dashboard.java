@@ -8,6 +8,7 @@ import android.graphics.PathDashPathEffect;
 import android.graphics.PathMeasure;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 
 import com.hencoder.plus.Utils;
@@ -56,6 +57,7 @@ public class Dashboard extends View {
 
     @Override
     protected void onDraw(Canvas canvas) {
+        Log.i("Dashboard","onDraw===");
         super.onDraw(canvas);
 
         // 画线
@@ -105,6 +107,7 @@ public class Dashboard extends View {
 
     public void setSpeed(int speed) {
         this.mCurrentSpeed = speed;
-        invalidate();
+//        invalidate();
+        postInvalidate();
     }
 }

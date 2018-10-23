@@ -2,9 +2,7 @@ package com.hencoder.plus;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -71,12 +69,7 @@ public class MainActivity extends AppCompatActivity {
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        dashboard.incrementSpeedBy(eventDown ? 1 : -1);
-                    }
-                });
+                dashboard.incrementSpeedBy(eventDown ? 1 : -1);
             }
         }, 0, 10);
     }

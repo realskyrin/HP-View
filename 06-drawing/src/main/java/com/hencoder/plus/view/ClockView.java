@@ -7,6 +7,7 @@ import android.graphics.Path;
 import android.graphics.PathDashPathEffect;
 import android.os.SystemClock;
 import android.support.annotation.Nullable;
+import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -21,6 +22,9 @@ public class ClockView extends View {
     private static final float HAND_MINUTE = Utils.dp2px(90);
     private static final float HAND_SECOND = Utils.dp2px(110);
 
+    /**
+     * 表盘周长
+     */
     private static final double DIAL_PERIMETER = 2 * Math.PI * RADIUS_DIAL;
 
     private float mHourDegree;
@@ -102,7 +106,14 @@ public class ClockView extends View {
 //        // 使当前绘制失效，下次系统重绘(16ms)时会调用 onDraw
 //        invalidate();
 
-        L.e("onDraw:"+SystemClock.currentThreadTimeMillis());
+//        postOnAnimation(new Runnable() {
+//            @Override
+//            public void run() {
+//                invalidate();
+//            }
+//        });
+
+        L.e("onDraw:"+System.currentTimeMillis());
     }
 
     private void drawDial(Canvas canvas) {

@@ -5,10 +5,12 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PathDashPathEffect;
+import android.os.SystemClock;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 
+import com.hencoder.plus.L;
 import com.hencoder.plus.Utils;
 
 import java.util.Calendar;
@@ -97,8 +99,10 @@ public class ClockView extends View {
         drawMinuteHand(canvas);
         // 秒针
         drawSecondHand(canvas);
-        // 使布局失效，重绘，会调用 onDraw
-        invalidate();
+//        // 使当前绘制失效，下次系统重绘(16ms)时会调用 onDraw
+//        invalidate();
+
+        L.e("onDraw:"+SystemClock.currentThreadTimeMillis());
     }
 
     private void drawDial(Canvas canvas) {
@@ -154,7 +158,6 @@ public class ClockView extends View {
                 (float) Math.sin(Math.toRadians(mSecondDegree)) * HAND_SECOND + getHeight() / 2,
                 paint);
     }
-
 
     /**
      * 根据当前系统时间得到时针、分针、秒针所对应的角度

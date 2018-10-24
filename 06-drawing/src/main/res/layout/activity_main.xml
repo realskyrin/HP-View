@@ -21,7 +21,11 @@
     <com.hencoder.plus.view.PieChart
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="visible"/>
+        android:visibility="invisible"/>
+
+    <com.hencoder.plus.view.ClockView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
     <Button
         android:id="@+id/button"

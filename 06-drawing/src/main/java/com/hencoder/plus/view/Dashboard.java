@@ -30,6 +30,8 @@ public class Dashboard extends View {
         paint.setStyle(Paint.Style.STROKE);
         paint.setStrokeWidth(Utils.dp2px(2));
         dash.addRect(0, 0, Utils.dp2px(2), Utils.dp2px(10), Path.Direction.CW);
+
+        // 创建一个和表盘大小一致的路径
         Path arc = new Path();
         arc.addArc(getWidth() / 2 - RADIUS,
                 getHeight() / 2 - RADIUS,
@@ -44,7 +46,7 @@ public class Dashboard extends View {
         // 这仅适用于绘画样式为STROKE或STROKE_AND_FILL时的绘图。
         // 如果paint的样式为FILL，则忽略此效果。paint的strokeWidth不会影响结果。
         effect = new PathDashPathEffect(
-                // 路径
+                // 形状的路径
                 dash,
                 // 每个形状之间的间距
                 (pathMeasure.getLength() - Utils.dp2px(2)) / 20,

@@ -26,6 +26,11 @@
     <com.hencoder.plus.view.ClockView
         android:id="@+id/clock"
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible"/>
+
+    <com.hencoder.plus.view.ImageTextView
+        android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
     <Button

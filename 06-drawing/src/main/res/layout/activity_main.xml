@@ -18,10 +18,40 @@
         <!--android:layout_height="match_parent"-->
         <!--android:visibility="invisible"/>-->
 
-    <!--<com.hencoder.plus.view.PieChart-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:visibility="invisible"/>-->
+    <com.hencoder.plus.view.PieChart
+        android:id="@+id/pieChart"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/colorAccent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/colorPrimary"/>
 
     <!--<com.hencoder.plus.view.ClockView-->
         <!--android:id="@+id/clock"-->
@@ -29,9 +59,9 @@
         <!--android:layout_height="match_parent"-->
         <!--android:visibility="invisible"/>-->
 
-    <com.hencoder.plus.view.ImageTextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+    <!--<com.hencoder.plus.view.ImageTextView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent" />-->
 
     <!--<Button-->
         <!--android:id="@+id/button"-->

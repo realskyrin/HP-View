@@ -1,1 +1,1 @@
-include ':06-drawing'
+include ':06-drawing', ':07class'

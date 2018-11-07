@@ -7,14 +7,18 @@ import android.graphics.Paint;
 import android.graphics.RectF;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.view.View;
 
 import com.hencoder.plus.Utils;
 
 public class PieChart extends View {
     private static final int RADIUS = (int) Utils.dp2px(150);
-    private static final int LENGTH = (int) Utils.dp2px(20);
-    private static final int PULLED_OUT_INDEX = 2;
+    /**
+     * 移出距离，也就是最终 x、y 两个直边对应的斜边距离
+     */
+    private static final int OFFSET = (int) Utils.dp2px(20);
+    private static int PULLED_OUT_INDEX = 2;
 
     Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
     RectF bounds = new RectF();
@@ -37,17 +41,32 @@ public class PieChart extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        int currentAngle = 0;
+        int currentAngle = 270;
         for (int i = 0; i < angles.length; i++) {
             paint.setColor(colors[i]);
             canvas.save();
             if (i == PULLED_OUT_INDEX) {
-                canvas.translate((float) Math.cos(Math.toRadians(currentAngle + angles[i] / 2)) * LENGTH,
-                        (float) Math.sin(Math.toRadians(currentAngle + angles[i] / 2)) * LENGTH);
+                // 平移画布，达到扇形分离的效果
+                // 根据斜边算直边x，c = OFFSET;A = angles[i] / 2;x = cos(A)*c
+                // 根据斜边算直边y，c = OFFSET;A = angles[i] / 2;y = sin(A)*c
+                canvas.translate((float) Math.cos(Math.toRadians(currentAngle + angles[i] / 2)) * OFFSET,
+                        (float) Math.sin(Math.toRadians(currentAngle + angles[i] / 2)) * OFFSET);
             }
             canvas.drawArc(bounds, currentAngle, angles[i], true, paint);
             canvas.restore();
             currentAngle += angles[i];
         }
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        if (event.getActionMasked()==MotionEvent.ACTION_UP){
+            PULLED_OUT_INDEX+=1;
+            if (PULLED_OUT_INDEX>angles.length-1){
+                PULLED_OUT_INDEX = 0;
+            }
+            invalidate();
+        }
+        return true;
     }
 }
